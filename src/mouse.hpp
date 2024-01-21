@@ -1,6 +1,7 @@
 /* mouse.hpp: Interfaces with x11 to grab mouse information.
  *
- * Copyright (C) 2014: Dalton Nell, Slop Contributors (https://github.com/naelstrof/slop/graphs/contributors).
+ * Copyright (C) 2014: Dalton Nell, Slop Contributors
+ * (https://github.com/naelstrof/slop/graphs/contributors).
  *
  * This file is part of Slop.
  *
@@ -21,10 +22,10 @@
 #ifndef N_MOUSE_H_
 #define N_MOUSE_H_
 
-#include <vector>
-#include <glm/glm.hpp>
 #include <X11/cursorfont.h>
+#include <glm/glm.hpp>
 #include <iostream>
+#include <vector>
 
 #include "x.hpp"
 
@@ -32,26 +33,27 @@ namespace slop {
 
 class Mouse {
 private:
-    X11* x11;
-    std::vector<glm::ivec2> buttons;
-    Cursor xcursor;
-    int currentCursor;
-    Window findWindow( Window foo );
-    int nodecorations;
-    Window ignoreWindow;
+  X11 *x11;
+  std::vector<glm::ivec2> buttons;
+  Cursor xcursor;
+  int currentCursor;
+  Window findWindow(Window foo);
+  int nodecorations;
+  Window ignoreWindow;
+
 public:
-    Window hoverWindow;
-    void update();
-    Mouse( X11* x11, int nodecorations, Window ignoreWindow );
-    ~Mouse();
-    void setCursor( int cursor );
-    glm::vec2 getMousePos();
-    void setButton( int button, int state );
-    int getButton( int button );
+  Window hoverWindow;
+  void update();
+  Mouse(X11 *x11, int nodecorations, Window ignoreWindow);
+  ~Mouse();
+  // void setCursor( int cursor );
+  glm::vec2 getMousePos();
+  void setButton(int button, int state);
+  int getButton(int button);
 };
 
-extern Mouse* mouse;
+extern Mouse *mouse;
 
-}
+} // namespace slop
 
 #endif // N_MOUSE_H_
